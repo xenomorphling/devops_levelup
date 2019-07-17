@@ -1,0 +1,21 @@
+pipeline{
+  agent any
+
+  stages{
+    stage('git'){
+      steps{
+        git 'https://github.com/xenomorphling/https-github.com-boxfuse-boxfuse-sample-java-war-hello.git'
+      }
+    }
+    stage('build'){
+      steps{
+        sh 'mvn package'
+      }
+    }
+    stage('deploy'){
+      steps{
+        rsync
+      }
+    }
+  }
+}
